@@ -62,15 +62,13 @@ func Serve(conn ServeConn, handler Handler) error {
 		}
 		if res := handler.ServeDHCP(req, reqType, options); res != nil {
 			// If IP not available, broadcast
-			ipStr, portStr, err := net.SplitHostPort(addr.String())
+			_, portStr, err := net.SplitHostPort(addr.String())
 			if err != nil {
 				return err
 			}
 
-			if net.ParseIP(ipStr).Equal(net.IPv4zero) || req.Broadcast() {
-				port, _ := strconv.Atoi(portStr)
-				addr = &net.UDPAddr{IP: net.IPv4bcast, Port: port}
-			}
+			port, _ := strconv.Atoi(portStr)
+			addr = &net.UDPAddr{IP: res.YIAddr(), Port: port}
 			if _, e := conn.WriteTo(res, addr); e != nil {
 				return e
 			}
