@@ -7,7 +7,7 @@ http://richard.warburton.it/
 See example_test.go for how to use this library to create a basic server.
 
 ## Documentation
-http://godoc.org/github.com/krolaw/dhcp4
+http://godoc.org/github.com/metachord/dhcp4
 
 ## Thanks
 Special thanks to:

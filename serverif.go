@@ -3,7 +3,7 @@ package dhcp4
 import (
 	"net"
 
-	"github.com/krolaw/dhcp4/conn"
+	"github.com/metachord/dhcp4/conn"
 
 	"golang.org/x/net/ipv4"
 )
